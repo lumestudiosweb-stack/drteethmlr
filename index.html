@@ -12,8 +12,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold:     #a87b45;
-      --gold-dk:  #8a6235;
+      --gold:     #0000af;
+      --gold-dk:  #000080;
       --dark:     #111111;
       --mid:      #4a4a4a;
       --light:    #f7f5f2;
@@ -546,7 +546,7 @@
     /* ── Hero ────────────────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: 88vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -610,7 +610,7 @@
       z-index: 2;
       max-width: var(--max);
       margin: 0 auto;
-      padding: 8rem 2rem 5rem;
+      padding: 7rem 2rem 4rem;
       width: 100%;
     }
 
@@ -728,7 +728,7 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1.5rem 2rem;
+      padding: 1.1rem 2rem;
       color: var(--white);
       border-right: 1px solid rgba(255,255,255,0.2);
     }
@@ -1504,7 +1504,7 @@
           <div class="section-label">About Us</div>
           <h2 class="section-title">Dedicated to Your Dental Health</h2>
           <div class="divider"></div>
-          <p style="color:var(--mid); line-height:1.75; margin-bottom:1rem; font-style:italic; font-family:var(--font-head); font-size:1.08rem; color:#6b5a45; border-left:3px solid var(--gold); padding-left:1rem;">
+          <p style="color:var(--mid); line-height:1.75; margin-bottom:1rem; font-style:italic; font-family:var(--font-head); font-size:1.08rem; color:#2b2f8f; border-left:3px solid var(--gold); padding-left:1rem;">
             "A genuine smile comes from the heart, but a healthy smile needs good dental care."
           </p>
           <p style="color:var(--mid); line-height:1.75;">
@@ -1742,7 +1742,7 @@
       <div class="equipment-grid">
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.08%20PM.jpeg" alt="Physiodispenser – Precision Implant Motor" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.08%20PM.jpeg" alt="Physiodispenser – Precision Implant Motor" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <span class="equip-badge">Advanced Surgical Technology</span>
             <div class="equip-name" style="margin-top:0.5rem;">Physiodispenser</div>
@@ -1754,7 +1754,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.10%20PM.jpeg" alt="Dio UV Activator" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.10%20PM.jpeg" alt="Dio UV Activator" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">Dio UV Light Activator</div>
             <div class="equip-desc">Award-winning UV curing unit ensuring optimal polymerization for composite restorations.</div>
@@ -1763,7 +1763,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.12%20PM.jpeg" alt="PRF Centrifuge – Advanced Healing Technology" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.12%20PM.jpeg" alt="PRF Centrifuge – Advanced Healing Technology" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <span class="equip-badge">Regenerative Dentistry</span>
             <div class="equip-name" style="margin-top:0.5rem;">PRF Centrifuge</div>
@@ -1775,7 +1775,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.13%20PM.jpeg" alt="Electrosurgery Radio Frequency Unit" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.13%20PM.jpeg" alt="Electrosurgery Radio Frequency Unit" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">Electrosurgery Unit</div>
             <div class="equip-desc">Radio frequency electrosurgery system for precise soft tissue management and bloodless surgical procedures.</div>
@@ -1783,7 +1783,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.33%20PM%20%281%29.jpeg" alt="LED Curing Light" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.33%20PM%20%281%29.jpeg" alt="LED Curing Light" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">LED Curing Light</div>
             <div class="equip-desc">High-intensity LED curing light for fast, reliable polymerization of light-cured dental materials.</div>
@@ -1791,7 +1791,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="genoray-portx.jpg" alt="Genoray Port-X III portable dental X-ray" loading="lazy" />
+          <img src="genoray-portx.jpg" alt="Genoray Port-X III portable dental X-ray" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <span class="equip-badge">Portable Imaging</span>
             <div class="equip-name" style="margin-top:0.5rem;">Genoray Port-X III Portable X-Ray</div>
@@ -1803,7 +1803,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-07-08%20at%206.51.59%20PM.jpeg" alt="Fussen Class B autoclave, 23 litre" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-07-08%20at%206.51.59%20PM.jpeg" alt="Fussen Class B autoclave, 23 litre" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <span class="equip-badge">Class B Sterilization</span>
             <div class="equip-name" style="margin-top:0.5rem;">Fussen Autoclave — 23L Class B</div>
@@ -1812,7 +1812,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-07-08%20at%206.52.00%20PM.jpeg" alt="UV sterilization storage chamber" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-07-08%20at%206.52.00%20PM.jpeg" alt="UV sterilization storage chamber" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">UV Sterilization Chamber</div>
             <div class="equip-desc">Ultraviolet storage cabinet that keeps sterilized instruments contaminant-free until the moment they are used.</div>
@@ -1820,7 +1820,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-07-08%20at%206.54.17%20PM.jpeg" alt="Ultrasonic instrument cleaner" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-07-08%20at%206.54.17%20PM.jpeg" alt="Ultrasonic instrument cleaner" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">Ultrasonic Cleaner</div>
             <div class="equip-desc">Heated ultrasonic bath that uses high-frequency waves to remove debris from instruments before sterilization — cleaning where a brush cannot reach.</div>
@@ -1828,7 +1828,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="fussen-sealer.jpg" alt="Fussen medical pouch sealing machine" loading="lazy" />
+          <img src="fussen-sealer.jpg" alt="Fussen medical pouch sealing machine" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">Fussen Sealing Machine</div>
             <div class="equip-desc">Seals instruments into sterilization pouches with a secure, tamper-evident seam — maintaining a sterile barrier right up to the point of use.</div>
@@ -1836,7 +1836,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-07-08%20at%206.51.58%20PM.jpeg" alt="Water distiller for autoclave" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-07-08%20at%206.51.58%20PM.jpeg" alt="Water distiller for autoclave" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">Distilled Water Machine</div>
             <div class="equip-desc">Produces pure distilled water in-house for the autoclave, protecting the sterilizer from scale and ensuring every cycle runs on clean, mineral-free water.</div>
@@ -1844,7 +1844,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.07%20PM.jpeg" alt="Dental Implant Systems" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.07%20PM.jpeg" alt="Dental Implant Systems" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">Dental Implant Systems</div>
             <div class="equip-desc">Premium implant kits from globally certified brands — ensuring long-term strength, biocompatibility and osseointegration.</div>
@@ -1852,7 +1852,7 @@
         </div>
 
         <div class="equip-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.29%20PM.jpeg" alt="3D Intraoral Scanner" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.29%20PM.jpeg" alt="3D Intraoral Scanner" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="equip-info">
             <div class="equip-name">3D Intraoral Scanner</div>
             <div class="equip-desc">Digital impression scanning for accurate 3D tooth models — eliminating messy putty impressions entirely.</div>
@@ -1875,7 +1875,7 @@
       <div class="awards-grid">
 
         <div class="award-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.16%20PM.jpeg" alt="BNI Testimonial Plaque - Keerthi Powertech" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.16%20PM.jpeg" alt="BNI Testimonial Plaque - Keerthi Powertech" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="award-info">
             <h4>BNI Testimonial — Keerthi Powertech</h4>
             <p>Awarded by Keerthi Powertech, recognising Dr. Shubha Ballal and the team for exceptional root canal treatment, professionalism and patient care.</p>
@@ -1883,7 +1883,7 @@
         </div>
 
         <div class="award-card">
-          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.18%20PM.jpeg" alt="BNI Testimonial Plaque - Deena Lobo, AiRA Salon" loading="lazy" />
+          <img src="WhatsApp%20Image%202026-03-30%20at%2010.55.18%20PM.jpeg" alt="BNI Testimonial Plaque - Deena Lobo, AiRA Salon" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
           <div class="award-info">
             <h4>BNI Testimonial — AiRA Salon &amp; Personal Services</h4>
             <p>Presented by Deena Lobo, AiRA Salon, commending Dr. Shubha Ballal for outstanding dental care, a warm clinic environment and highly recommended services.</p>
@@ -2170,11 +2170,11 @@
             </li>
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-              <a href="tel:08660708303" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#a87b45'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">086607 08303</a>
+              <a href="tel:08660708303" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#0000af'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">086607 08303</a>
             </li>
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              <a href="mailto:drteeth2903@gmail.com" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#a87b45'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">drteeth2903@gmail.com</a>
+              <a href="mailto:drteeth2903@gmail.com" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#0000af'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">drteeth2903@gmail.com</a>
             </li>
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
@@ -2197,14 +2197,26 @@
   <script>
     /* ── Lightbox ─────────────────────────────────────────── */
     const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img')).map(i => ({ src: i.src, alt: i.alt }));
+    let activeImgs = galleryImgs;
     let currentIdx = 0;
 
     function openLightbox(idx) {
+      activeImgs = galleryImgs;
       currentIdx = idx;
+      showLightboxImage();
+    }
+    function openImgLightbox(imgEl) {
+      const grid = imgEl.closest('.gallery-grid') || imgEl.closest('.equipment-grid');
+      const imgs = grid ? Array.from(grid.querySelectorAll('img')) : [imgEl];
+      activeImgs = imgs.map(i => ({ src: i.src, alt: i.alt }));
+      currentIdx = imgs.indexOf(imgEl);
+      showLightboxImage();
+    }
+    function showLightboxImage() {
       const lb = document.getElementById('lightbox');
-      document.getElementById('lightbox-img').src = galleryImgs[idx].src;
-      document.getElementById('lightbox-img').alt = galleryImgs[idx].alt;
-      document.getElementById('lightbox-counter').textContent = (idx + 1) + ' / ' + galleryImgs.length;
+      document.getElementById('lightbox-img').src = activeImgs[currentIdx].src;
+      document.getElementById('lightbox-img').alt = activeImgs[currentIdx].alt;
+      document.getElementById('lightbox-counter').textContent = (currentIdx + 1) + ' / ' + activeImgs.length;
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -2216,8 +2228,8 @@
       if (e.target === document.getElementById('lightbox')) closeLightbox();
     }
     function shiftLightbox(dir) {
-      currentIdx = (currentIdx + dir + galleryImgs.length) % galleryImgs.length;
-      openLightbox(currentIdx);
+      currentIdx = (currentIdx + dir + activeImgs.length) % activeImgs.length;
+      showLightboxImage();
     }
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
