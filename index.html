@@ -374,6 +374,13 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
     }
+    @media (min-width: 601px) {
+      .awards-grid .award-card:last-child:nth-child(2n+1) {
+        grid-column: 1 / span 2;
+        max-width: calc(50% - 1rem);
+        margin: 0 auto;
+      }
+    }
 
     .award-card {
       background: var(--white);
@@ -1104,10 +1111,24 @@
     /* ── Testimonials ────────────────────────────────────────── */
     .testimonials { background: var(--light); }
 
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .testimonials-carousel {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .testimonials-viewport {
+      overflow: hidden;
+      flex: 1;
+      min-width: 0;
+    }
+    .testimonials-track {
+      display: flex;
       gap: 1.5rem;
+      transition: transform 0.45s cubic-bezier(.22,.68,0,1.2);
+    }
+    .testimonials-track .testimonial-card {
+      flex: 0 0 calc((100% - 2 * 1.5rem) / 3);
+      min-width: 0;
     }
 
     .testimonial-card {
@@ -1115,10 +1136,12 @@
       border-radius: 6px;
       padding: 1.8rem;
       border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
     }
     .testimonial-stars { color: #f5c518; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 1rem; }
     .testimonial-text { font-size: 0.9rem; color: var(--mid); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
-    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
     .author-avatar {
       width: 40px; height: 40px;
       background: var(--gold);
@@ -1129,9 +1152,65 @@
       color: var(--white);
       font-family: var(--font-head);
       font-size: 1rem;
+      flex-shrink: 0;
     }
     .author-name { font-size: 0.9rem; font-weight: 600; }
     .author-area { font-size: 0.78rem; color: var(--mid); }
+
+    .testi-nav {
+      width: 44px; height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .testi-nav:hover:not(:disabled) {
+      background: var(--gold);
+      color: var(--white);
+      border-color: var(--gold);
+    }
+    .testi-nav:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .testimonials-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.8rem;
+    }
+    .testimonials-dots .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonials-dots .dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 1024px) {
+      .testimonials-track .testimonial-card {
+        flex: 0 0 calc((100% - 1.5rem) / 2);
+      }
+    }
+    @media (max-width: 768px) {
+      .testimonials-track .testimonial-card { flex: 0 0 100%; }
+      .testi-nav { width: 36px; height: 36px; min-width: 36px; font-size: 1.2rem; }
+    }
 
     /* ── Footer ──────────────────────────────────────────────── */
     footer {
@@ -1271,9 +1350,6 @@
       /* Appointment */
       .appt-inner { grid-template-columns: 1fr; gap: 2rem; }
       .appt-aside { order: -1; }
-
-      /* Testimonials */
-      .testimonials-grid { grid-template-columns: 1fr; gap: 1rem; }
 
       /* Form */
       .form-grid { grid-template-columns: 1fr; }
@@ -1895,6 +1971,14 @@
           </div>
         </div>
 
+        <div class="award-card">
+          <img src="WhatsApp%20Image%202026-07-09%20at%203.42.21%20PM.jpeg" alt="BNI Testimonial Plaque - Dr. Ethihas Suvarna, Jaya Offset Printers" loading="lazy" onclick="openImgLightbox(this)" style="cursor:pointer;" />
+          <div class="award-info">
+            <h4>BNI Testimonial — Jaya Offset Printers</h4>
+            <p>Presented by Dr. Ethihas Suvarna, Jaya Offset Printers, praising Dr. Shubha Ballal's skill and genuine care for a seamless, painless composite filling and a natural-looking result.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2095,41 +2179,112 @@
         <div class="divider"></div>
         <p class="section-sub">Real experiences from our patients in Mangaluru.</p>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Recently visited Dr. Shubha Ballal and Dr. Ashish Shetty for a root canal treatment and wisdom tooth extraction, and I am very pleased with the experience. They were incredibly professional, taking the time to explain each step of the procedures and addressing all my concerns with patience. Both the root canal and extraction were performed with great skill, and the pain management throughout was excellent. I felt well-informed about what to expect during and after the procedures, which helped alleviate my anxiety."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div>
-              <div class="author-name">Shilma Shetty</div>
-              <div class="author-area">Google Review</div>
+      <div class="testimonials-carousel">
+        <button class="testi-nav testi-prev" onclick="shiftTestimonials(-1)" aria-label="Previous testimonials">&#x2039;</button>
+        <div class="testimonials-viewport">
+          <div class="testimonials-track" id="testimonialsTrack">
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Recently visited Dr. Shubha Ballal and Dr. Ashish Shetty for a root canal treatment and wisdom tooth extraction, and I am very pleased with the experience. They were incredibly professional, taking the time to explain each step of the procedures and addressing all my concerns with patience. Both the root canal and extraction were performed with great skill, and the pain management throughout was excellent. I felt well-informed about what to expect during and after the procedures, which helped alleviate my anxiety."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">S</div>
+                <div>
+                  <div class="author-name">Shilma Shetty</div>
+                  <div class="author-area">Google Review</div>
+                </div>
+              </div>
             </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"I recently visited Dr. Shubha Ballal for my dental treatment (8 no's cap, bridge). Your attention, concern and the time taken for my well-being have made a world of difference in my dental health. I always felt comfortable and confident in your care, and though the procedures were time consuming and tedious, it was worth the wait. Thank you and your staff for your dedication and for making each visit as smooth and pleasant as possible. It's clear that you take great pride in your work, and I'm grateful to be under your care. I strongly recommend Dr. Teeth for any of your dental problems/treatments."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">S</div>
+                <div>
+                  <div class="author-name">Stany Mascarenhas</div>
+                  <div class="author-area">Local Guide · Google Review</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"My experience at Dr. Teeth has been positive and every time I am made to feel welcome with genuine care. Dr. Shubha Ballal and Dr. Ashish Shetty are very knowledgeable, professional and truly caring about our oral health. I highly recommend Dr. Teeth to everyone with oral problems."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">R</div>
+                <div>
+                  <div class="author-name">Rovina Miranda</div>
+                  <div class="author-area">Google Review</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"I had an excellent experience with Dr. Ashish Shetty and Dr. Shubha Ballal for my dental treatment, including teeth filling, root canal and cap placement. Both doctors are highly skilled, professional and take the time to clearly explain every step, making the entire process smooth and comfortable. The treatment was handled with great care and was almost painless. Wonderful hospitality with friendly and well-organized ensuring a pleasant experience throughout. I will highly recommend this clinic for my friends and relatives."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">D</div>
+                <div>
+                  <div class="author-name">Dilip Samani</div>
+                  <div class="author-area">Google Review · 2 months ago</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Painless and smooth treatment. Highly recommend! Dr. Shubha is very professional and friendly. Excellent care and clean clinic. Quick, painless tooth extraction. Very satisfied with the treatment. Great experience. Will visit again. Friendly staff and good service. One of the best dental experiences!"</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">P</div>
+                <div>
+                  <div class="author-name">Priya Associates</div>
+                  <div class="author-area">Tax Consultant · Google Review · 2 months ago</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Excellent experience with Dr. Shubha and Dr. Shreyas for my root canal treatment. Professional, courteous, and well-equipped clinic. Highly recommended!"</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">M</div>
+                <div>
+                  <div class="author-name">Malon Miranda</div>
+                  <div class="author-area">Google Review · a year ago</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Doctors are very kind and caring and also clinic is very neat and clean... Thank you so much for your love Dr. Shubha."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">A</div>
+                <div>
+                  <div class="author-name">Akshata Suvarna</div>
+                  <div class="author-area">Google Review · a year ago</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Recently visited for root canal and filling. Had a pleasant experience. Fast, simple and almost painless. Easy to recommend."</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">M</div>
+                <div>
+                  <div class="author-name">Mokshith Kumar</div>
+                  <div class="author-area">Local Guide · Google Review · a year ago</div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"I recently visited Dr. Shubha Ballal for my dental treatment (8 no's cap, bridge). Your attention, concern and the time taken for my well-being have made a world of difference in my dental health. I always felt comfortable and confident in your care, and though the procedures were time consuming and tedious, it was worth the wait. Thank you and your staff for your dedication and for making each visit as smooth and pleasant as possible. It's clear that you take great pride in your work, and I'm grateful to be under your care. I strongly recommend Dr. Teeth for any of your dental problems/treatments."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div>
-              <div class="author-name">Stany Mascarenhas</div>
-              <div class="author-area">Local Guide · Google Review</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"My experience at Dr. Teeth has been positive and every time I am made to feel welcome with genuine care. Dr. Shubha Ballal and Dr. Ashish Shetty are very knowledgeable, professional and truly caring about our oral health. I highly recommend Dr. Teeth to everyone with oral problems."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">R</div>
-            <div>
-              <div class="author-name">Rovina Miranda</div>
-              <div class="author-area">Google Review</div>
-            </div>
-          </div>
-        </div>
+        <button class="testi-nav testi-next" onclick="shiftTestimonials(1)" aria-label="Next testimonials">&#x203A;</button>
       </div>
+      <div class="testimonials-dots" id="testimonialsDots"></div>
     </div>
   </section>
 
@@ -2251,6 +2406,54 @@
       a.addEventListener('click', () => header.classList.remove('nav-open'))
     );
 
+    /* ── Testimonials carousel ────────────────────────────── */
+    (function () {
+      const track = document.getElementById('testimonialsTrack');
+      if (!track) return;
+      const cards = Array.from(track.children);
+      const dotsWrap = document.getElementById('testimonialsDots');
+      const prevBtn = document.querySelector('.testi-prev');
+      const nextBtn = document.querySelector('.testi-next');
+      let index = 0;
+
+      function perView() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+      }
+      function maxIndex() {
+        return Math.max(0, cards.length - perView());
+      }
+      function renderDots() {
+        while (dotsWrap.firstChild) dotsWrap.removeChild(dotsWrap.firstChild);
+        const total = maxIndex() + 1;
+        for (let i = 0; i < total; i++) {
+          const d = document.createElement('button');
+          d.className = 'dot' + (i === index ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to testimonial set ' + (i + 1));
+          d.addEventListener('click', () => { index = i; update(); });
+          dotsWrap.appendChild(d);
+        }
+      }
+      function update() {
+        index = Math.min(Math.max(index, 0), maxIndex());
+        const cardRect = cards[0].getBoundingClientRect();
+        const trackStyle = getComputedStyle(track);
+        const gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
+        const offset = index * (cardRect.width + gap);
+        track.style.transform = 'translateX(-' + offset + 'px)';
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === maxIndex();
+        renderDots();
+      }
+      window.shiftTestimonials = function (dir) {
+        index += dir;
+        update();
+      };
+      window.addEventListener('resize', update);
+      update();
+    })();
+
     /* ── Header scroll blend ──────────────────────────────── */
     function updateHeader() {
       if (window.scrollY > 60) {
@@ -2280,7 +2483,7 @@
     });
     // Stagger grids
     ['.services-grid','.gallery-grid','.equipment-grid',
-     '.awards-grid','.testimonials-grid','.contact-info',
+     '.awards-grid','.testimonials-track','.contact-info',
      '.about-features'].forEach(sel => {
       const el = document.querySelector(sel);
       if (el) el.classList.add('stagger');
