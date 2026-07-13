@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Teeth Dental Care & Implant Centre – Mangaluru</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b1e6e'/%3E%3Cpath transform='translate(20,14) scale(0.6)' fill='%23ffffff' d='M50 5C30 5 15 20 15 38c0 10 4 18 4 28 0 15 5 49 11 49 4 0 6-8 8-20 2-10 4-15 12-15s10 5 12 15c2 12 4 20 8 20 6 0 11-34 11-49 0-10 4-18 4-28C85 20 70 5 50 5z'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -14,6 +15,7 @@
     :root {
       --gold:     #0b1e6e;
       --gold-dk:  #081550;
+      --gold-lt:  #9db4ff; /* readable accent for dark backgrounds */
       --dark:     #111111;
       --mid:      #4a4a4a;
       --light:    #f7f5f2;
@@ -85,13 +87,13 @@
     .gallery-item .overlay {
       position: absolute;
       inset: 0;
-      background: rgba(168,123,69,0);
+      background: rgba(11,30,110,0);
       transition: background 0.35s;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .gallery-item:hover .overlay { background: rgba(168,123,69,0.18); }
+    .gallery-item:hover .overlay { background: rgba(11,30,110,0.22); }
     .gallery-item .overlay svg {
       color: white;
       opacity: 0;
@@ -148,7 +150,7 @@
       transition: background 0.2s;
       font-family: var(--font-head);
     }
-    .lightbox-nav:hover { background: rgba(168,123,69,0.5); }
+    .lightbox-nav:hover { background: rgba(11,30,110,0.55); }
     .lightbox-prev { left: 1rem; }
     .lightbox-next { right: 1rem; }
     .lightbox-counter {
@@ -265,7 +267,7 @@
     }
     .equip-toggle:hover {
       border-color: var(--gold);
-      background: rgba(168,123,69,0.1);
+      background: rgba(11,30,110,0.08);
     }
     .equip-toggle .t-icon { font-size: 1rem; line-height: 1; }
 
@@ -398,8 +400,9 @@
     .award-card img {
       width: 100%;
       aspect-ratio: 4/3;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: center;
+      background: var(--light);
       display: block;
     }
     .award-info {
@@ -439,7 +442,8 @@
     header.scrolled .logo-sub     { color: var(--mid); }
     header .nav-links a  { color: rgba(255,255,255,0.9); transition: color 0.3s; }
     header.scrolled .nav-links a { color: var(--dark); }
-    header .nav-links a:hover { color: var(--gold) !important; }
+    header .nav-links a:hover { color: var(--gold-lt) !important; }
+    header.scrolled .nav-links a:hover { color: var(--gold) !important; }
     header .hamburger span { background: var(--white); transition: background 0.35s; }
     header.scrolled .hamburger span { background: var(--dark); }
     /* hero offset */
@@ -457,16 +461,29 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.9rem;
       text-decoration: none;
     }
+    .logo-mark {
+      width: 56px; height: 56px;
+      min-width: 56px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: color 0.35s;
+    }
+    .logo-mark svg { width: 26px; height: 31px; display: block; }
+    header.scrolled .logo-mark { color: var(--gold); }
     .logo-text { display: flex; flex-direction: column; line-height: 1; }
     .logo-name {
       font-family: 'Cinzel', serif;
-      font-size: 3.6rem;
+      font-size: 2.7rem;
       font-weight: 700;
       color: var(--gold);
-      letter-spacing: 6px;
+      letter-spacing: 5px;
       line-height: 1;
       text-transform: uppercase;
     }
@@ -489,9 +506,11 @@
     }
 
     @media (max-width: 768px) {
-      .logo-name { font-size: 2.4rem; letter-spacing: 3px; }
+      .logo-name { font-size: 1.9rem; letter-spacing: 3px; }
       .logo-tagline { font-size: 0.5rem; letter-spacing: 2px; }
       .logo-sub { display: none; }
+      .logo-mark { width: 42px; height: 42px; min-width: 42px; }
+      .logo-mark svg { width: 19px; height: 23px; }
     }
 
     .nav-links {
@@ -591,8 +610,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 70% 50%, rgba(168,123,69,0.15) 0%, transparent 60%),
-        radial-gradient(circle at 20% 80%, rgba(168,123,69,0.08) 0%, transparent 40%);
+        radial-gradient(circle at 70% 50%, rgba(60,90,200,0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(60,90,200,0.08) 0%, transparent 40%);
     }
 
     /* Hero stock image */
@@ -921,7 +940,7 @@
 
     .service-icon {
       width: 52px; height: 52px;
-      background: rgba(168,123,69,0.1);
+      background: rgba(11,30,110,0.08);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1068,7 +1087,7 @@
     }
     input:focus, select:focus, textarea:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(168,123,69,0.1);
+      box-shadow: 0 0 0 3px rgba(11,30,110,0.08);
     }
     textarea { resize: vertical; min-height: 100px; }
     select { appearance: none; }
@@ -1426,6 +1445,24 @@
     /* Smooth scroll offset */
     [id] { scroll-margin-top: 80px; }
 
+    /* ── Readability: light accent on dark sections ──────────── */
+    .hero-content h1 span { color: var(--gold-lt); }
+    .equipment .section-label { color: var(--gold-lt); }
+    .equipment .divider { background: var(--gold-lt); }
+    .equip-toggle { color: var(--gold-lt); }
+    .equip-toggle:hover { border-color: var(--gold-lt); }
+    .equip-card:hover { border-color: var(--gold-lt); }
+    .why .section-label { color: var(--gold-lt); }
+    .why .divider { background: var(--gold-lt); }
+    .why-num { color: var(--gold-lt); }
+    .why-card:hover { border-color: var(--gold-lt); }
+    .footer-col h4::after { background: var(--gold-lt); }
+    .footer-links a::before { color: var(--gold-lt); }
+    .footer-links a:hover { color: var(--gold-lt); }
+    .footer-contact-list svg { color: var(--gold-lt); }
+    .appt-point-num { background: var(--gold-lt); color: var(--dark); }
+    .equip-modal .equip-benefits li::before { background: var(--gold-lt); }
+
     /* ── Entrance animations ──────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(32px); }
@@ -1487,6 +1524,11 @@
   <header id="header">
     <nav>
       <a href="#" class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="currentColor">
+            <path d="M50 5C30 5 15 20 15 38c0 10 4 18 4 28 0 15 5 49 11 49 4 0 6-8 8-20 2-10 4-15 12-15s10 5 12 15c2 12 4 20 8 20 6 0 11-34 11-49 0-10 4-18 4-28C85 20 70 5 50 5z"/>
+          </svg>
+        </span>
         <div class="logo-text">
           <span class="logo-name">Dr.Teeth</span>
           <span class="logo-tagline">Dental Care &bull; Implant Centre</span>
@@ -2293,6 +2335,17 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap:0.7rem;">
+            <span style="width:40px; height:40px; min-width:40px; border:2px solid var(--gold-lt); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-lt);" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="currentColor" style="width:18px; height:22px; display:block;">
+                <path d="M50 5C30 5 15 20 15 38c0 10 4 18 4 28 0 15 5 49 11 49 4 0 6-8 8-20 2-10 4-15 12-15s10 5 12 15c2 12 4 20 8 20 6 0 11-34 11-49 0-10 4-18 4-28C85 20 70 5 50 5z"/>
+              </svg>
+            </span>
+            <div style="display:flex; flex-direction:column; line-height:1;">
+              <span class="logo-name" style="font-size:1.4rem; color:var(--white); letter-spacing:3px;">Dr.Teeth</span>
+              <span class="logo-sub" style="color:rgba(255,255,255,0.4); margin-top:4px;">Dental Care &bull; Implant Centre</span>
+            </div>
+          </div>
           <p>A trusted dental care clinic serving Mangaluru and nearby areas. Advanced implant dentistry, cosmetic care, and comprehensive oral health services under one roof.</p>
         </div>
 
@@ -2330,11 +2383,11 @@
             </li>
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-              <a href="tel:08660708303" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#0b1e6e'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">086607 08303</a>
+              <a href="tel:08660708303" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#9db4ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">086607 08303</a>
             </li>
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              <a href="mailto:drteeth2903@gmail.com" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#0b1e6e'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">drteeth2903@gmail.com</a>
+              <a href="mailto:drteeth2903@gmail.com" style="color:rgba(255,255,255,0.55); transition:color 0.2s;" onmouseover="this.style.color='#9db4ff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">drteeth2903@gmail.com</a>
             </li>
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
@@ -2348,7 +2401,7 @@
       <div class="container">
         <span>© 2026 Dr. Teeth Dental Care &amp; Implant Centre, Mangaluru. All rights reserved.</span>
         <span style="display:flex; align-items:center; gap:0.5rem;">
-          Designed by <a href="#" style="color:var(--gold); font-weight:600; letter-spacing:0.3px; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">LuMe Studios</a>
+          Designed by <a href="#" style="color:var(--gold-lt); font-weight:600; letter-spacing:0.3px; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">LuMe Studios</a>
         </span>
       </div>
     </div>
