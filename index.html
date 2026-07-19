@@ -288,7 +288,8 @@
       </div>
     </div>
   </div>
-  <div id="equipCar" class="no-scrollbar mt-10 flex gap-5 overflow-x-auto px-5 md:px-[max(2rem,calc((100vw-1200px)/2+2rem))] snap-x snap-mandatory pt-4 pb-16 -mb-10">
+  <div id="equipCar" class="no-scrollbar mt-10 flex gap-5 overflow-x-auto snap-x snap-mandatory pt-4 pb-16 -mb-10">
+    <div class="snap-start shrink-0 w-10 md:w-[max(4rem,calc((100vw-1200px)/2+4rem))]" aria-hidden="true"></div>
     <article class="snap-start shrink-0 w-[80vw] sm:w-[350px] rounded-[26px] bg-[#F8F6F0] overflow-hidden grad-border" style="box-shadow: rgba(10,16,48,0.3) 0px 30px 60px -24px;">
       <div class="relative overflow-hidden cursor-pointer" style="aspect-ratio:16/11;" onclick="openLB(this)"><img src="genoray-portx.jpg" alt="Genoray Port-X III portable dental X-ray" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy"></div>
       <div class="p-6">
@@ -393,6 +394,7 @@
         <p class="mt-2 text-sm text-[#6B6F80] leading-relaxed">Premium implant kits from globally certified brands for long-term strength and osseointegration.</p>
       </div>
     </article>
+    <div class="shrink-0 w-10 md:w-[max(4rem,calc((100vw-1200px)/2+4rem))]" aria-hidden="true"></div>
   </div>
   <div id="equipDots" class="flex items-center justify-center gap-2 mt-4 px-5"></div>
 </section>
@@ -507,7 +509,8 @@
       </button>
     </div>
   </div>
-  <div id="revCar" class="no-scrollbar mt-8 flex gap-5 overflow-x-auto px-5 md:px-[max(2rem,calc((100vw-1200px)/2+2rem))] snap-x snap-mandatory pb-8 items-stretch">
+  <div id="revCar" class="no-scrollbar mt-8 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-8 items-stretch">
+    <div class="snap-start shrink-0 w-10 md:w-[max(4rem,calc((100vw-1200px)/2+4rem))]" aria-hidden="true"></div>
     <article class="snap-start shrink-0 w-[85vw] sm:w-[400px] rounded-[26px] bg-[#F8F6F0] p-7 grad-border flex flex-col" style="box-shadow: rgba(10,16,48,0.22) 0px 24px 50px -28px;">
       <p class="text-[#E8B33D] text-sm tracking-[0.2em]">★★★★★</p>
       <p class="mt-4 text-sm text-[#6B6F80] leading-relaxed italic flex-1">"Recently visited Dr. Shubha Ballal and Dr. Ashish Shetty for a root canal treatment and wisdom tooth extraction, and I am very pleased with the experience. Both procedures were performed with great skill, and the pain management throughout was excellent."</p>
@@ -564,6 +567,7 @@
         <div><p class="text-sm font-medium">Mokshith Kumar</p><p class="text-xs text-[#9094A3]">Local Guide · Google Review</p></div>
       </div>
     </article>
+    <div class="shrink-0 w-10 md:w-[max(4rem,calc((100vw-1200px)/2+4rem))]" aria-hidden="true"></div>
   </div>
   <div id="revDots" class="flex items-center justify-center gap-2 mt-2 px-5"></div>
 </section>
@@ -821,14 +825,14 @@
   document.querySelectorAll('[data-car-next]').forEach(btn => {
     btn.addEventListener('click', () => {
       const car = document.getElementById(btn.dataset.carNext);
-      const card = car?.querySelector(':scope > *');
+      const card = car?.querySelector(':scope > article');
       car?.scrollBy({ left: card ? card.getBoundingClientRect().width + 20 : 400, behavior: 'smooth' });
     });
   });
   document.querySelectorAll('[data-car-prev]').forEach(btn => {
     btn.addEventListener('click', () => {
       const car = document.getElementById(btn.dataset.carPrev);
-      const card = car?.querySelector(':scope > *');
+      const card = car?.querySelector(':scope > article');
       car?.scrollBy({ left: card ? -(card.getBoundingClientRect().width + 20) : -400, behavior: 'smooth' });
     });
   });
@@ -837,7 +841,7 @@
     const car = document.getElementById(carId);
     const dotsWrap = document.getElementById(dotsId);
     if (!car || !dotsWrap) return;
-    const cards = Array.from(car.children);
+    const cards = Array.from(car.children).filter(el => el.tagName === 'ARTICLE');
     cards.forEach((card, i) => {
       const dot = document.createElement('button');
       dot.type = 'button';
