@@ -29,6 +29,9 @@
     .nav-link:hover::after{width:100%;}
     .mnav-link{transition:color .2s ease,background-color .2s ease;}
     .mnav-link:hover,.mnav-link:active{color:#0B1E6E;}
+    /* Carousel dot rail */
+    .car-dot{width:7px;height:7px;border-radius:9999px;background:#D9D5C9;border:none;padding:0;cursor:pointer;transition:background .25s ease,width .3s cubic-bezier(.22,1,.36,1);}
+    .car-dot.active{background:#0B1E6E;width:22px;}
     @media (prefers-reduced-motion: reduce){.w-anim{animation:none;opacity:1;filter:none;transform:none;}}
   </style>
 </head>
@@ -275,12 +278,12 @@
           World-class equipment
         </h2>
       </div>
-      <div class="hidden md:flex gap-2">
-        <button data-car-prev="equipCar" aria-label="Previous equipment" class="w-11 h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
-          <iconify-icon icon="solar:arrow-left-linear" class="text-lg"></iconify-icon>
+      <div class="flex gap-2 shrink-0">
+        <button data-car-prev="equipCar" aria-label="Previous equipment" class="w-9 h-9 md:w-11 md:h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
+          <iconify-icon icon="solar:arrow-left-linear" class="text-base md:text-lg"></iconify-icon>
         </button>
-        <button data-car-next="equipCar" aria-label="Next equipment" class="w-11 h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
-          <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+        <button data-car-next="equipCar" aria-label="Next equipment" class="w-9 h-9 md:w-11 md:h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
+          <iconify-icon icon="solar:arrow-right-linear" class="text-base md:text-lg"></iconify-icon>
         </button>
       </div>
     </div>
@@ -391,6 +394,7 @@
       </div>
     </article>
   </div>
+  <div id="equipDots" class="flex items-center justify-center gap-2 mt-4 px-5"></div>
 </section>
 
 <!-- ===================== GALLERY ===================== -->
@@ -494,12 +498,12 @@
     <h2 class="reveal text-3xl md:text-4xl tracking-tight" style="font-family:var(--serif); font-weight:500;">
       What our patients say
     </h2>
-    <div class="hidden md:flex gap-2">
-      <button data-car-prev="revCar" aria-label="Previous reviews" class="w-11 h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
-        <iconify-icon icon="solar:arrow-left-linear" class="text-lg"></iconify-icon>
+    <div class="flex gap-2 shrink-0">
+      <button data-car-prev="revCar" aria-label="Previous reviews" class="w-9 h-9 md:w-11 md:h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
+        <iconify-icon icon="solar:arrow-left-linear" class="text-base md:text-lg"></iconify-icon>
       </button>
-      <button data-car-next="revCar" aria-label="Next reviews" class="w-11 h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
-        <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+      <button data-car-next="revCar" aria-label="Next reviews" class="w-9 h-9 md:w-11 md:h-11 rounded-full border border-[#14152A]/15 flex items-center justify-center hover:bg-[#14152A]/5 transition-colors btn-lift">
+        <iconify-icon icon="solar:arrow-right-linear" class="text-base md:text-lg"></iconify-icon>
       </button>
     </div>
   </div>
@@ -561,6 +565,7 @@
       </div>
     </article>
   </div>
+  <div id="revDots" class="flex items-center justify-center gap-2 mt-2 px-5"></div>
 </section>
 
 <!-- ===================== HOURS & CONTACT ===================== -->
@@ -792,24 +797,74 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.counter').forEach(el => cio.observe(el));
 
-  // Parallax
-  if (!reduced) {
+  // Parallax — desktop only (this was the cause of scroll jank/wobble on phones:
+  // an unthrottled scroll listener forcing a layout read+write every single tick),
+  // and rAF-throttled here so it never fights the browser's own scroll thread.
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (!reduced && !isMobile) {
     const parallaxEls = document.querySelectorAll('.parallax');
-    window.addEventListener('scroll', () => {
+    let ticking = false;
+    function updateParallax() {
       parallaxEls.forEach(el => {
         const r = el.getBoundingClientRect();
         el.style.transform = `translateY(${(r.top - innerHeight / 2) * 0.06}px)`;
       });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
     }, { passive: true });
   }
 
-  // Carousels (generic)
+  // Carousels: arrow buttons scroll by exactly one card's width, and a dot
+  // rail below each carousel tracks/targets the active card — works on touch too.
   document.querySelectorAll('[data-car-next]').forEach(btn => {
-    btn.addEventListener('click', () => document.getElementById(btn.dataset.carNext)?.scrollBy({ left: 400, behavior: 'smooth' }));
+    btn.addEventListener('click', () => {
+      const car = document.getElementById(btn.dataset.carNext);
+      const card = car?.querySelector(':scope > *');
+      car?.scrollBy({ left: card ? card.getBoundingClientRect().width + 20 : 400, behavior: 'smooth' });
+    });
   });
   document.querySelectorAll('[data-car-prev]').forEach(btn => {
-    btn.addEventListener('click', () => document.getElementById(btn.dataset.carPrev)?.scrollBy({ left: -400, behavior: 'smooth' }));
+    btn.addEventListener('click', () => {
+      const car = document.getElementById(btn.dataset.carPrev);
+      const card = car?.querySelector(':scope > *');
+      car?.scrollBy({ left: card ? -(card.getBoundingClientRect().width + 20) : -400, behavior: 'smooth' });
+    });
   });
+
+  function setupCarouselDots(carId, dotsId) {
+    const car = document.getElementById(carId);
+    const dotsWrap = document.getElementById(dotsId);
+    if (!car || !dotsWrap) return;
+    const cards = Array.from(car.children);
+    cards.forEach((card, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'car-dot';
+      dot.setAttribute('aria-label', 'Go to item ' + (i + 1));
+      dot.addEventListener('click', () => card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+    let ticking = false;
+    function updateActive() {
+      const carLeft = car.getBoundingClientRect().left;
+      let closest = 0, closestDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.getBoundingClientRect().left - carLeft);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+      ticking = false;
+    }
+    car.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateActive); ticking = true; }
+    }, { passive: true });
+    updateActive();
+  }
+  setupCarouselDots('equipCar', 'equipDots');
+  setupCarouselDots('revCar', 'revDots');
 
   // Mobile menu
   const menuBtn = document.getElementById('menuBtn');
