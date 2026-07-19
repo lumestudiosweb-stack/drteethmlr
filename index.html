@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Teeth Dental Care & Implant Centre – Mangaluru</title>
   <meta name="description" content="Advanced dental implants, cosmetic dentistry and complete oral care in Konchady, Mangaluru. Dr. Shubha Ballal & Dr. Ashish Shetty.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath fill='%230b1e6e' d='M50 5C30 5 15 20 15 38c0 10 4 18 4 28 0 15 5 49 11 49 4 0 6-8 8-20 2-10 4-15 12-15s10 5 12 15c2 12 4 20 8 20 6 0 11-34 11-49 0-10 4-18 4-28C85 20 70 5 50 5z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +22,13 @@
     .btn-lift:active{transform:translateY(0) scale(.96);box-shadow:0 6px 14px -8px rgba(10,16,48,.35);}
     .no-scrollbar{scrollbar-width:none;}
     .no-scrollbar::-webkit-scrollbar{display:none;}
+    /* Nav hover highlight */
+    .nav-link{position:relative;transition:color .25s ease;}
+    .nav-link::after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;border-radius:2px;background:#0B1E6E;transition:width .3s cubic-bezier(.22,1,.36,1);}
+    .nav-link:hover{color:#0B1E6E;}
+    .nav-link:hover::after{width:100%;}
+    .mnav-link{transition:color .2s ease,background-color .2s ease;}
+    .mnav-link:hover,.mnav-link:active{color:#0B1E6E;}
     @media (prefers-reduced-motion: reduce){.w-anim{animation:none;opacity:1;filter:none;transform:none;}}
   </style>
 </head>
@@ -28,20 +37,20 @@
 <!-- ===================== HEADER ===================== -->
 <header class="sticky top-0 z-50 border-b border-[#14152A]/5" style="background:rgba(243,241,234,0.85); backdrop-filter:blur(14px);">
   <div class="mx-auto max-w-[1200px] px-5 md:px-8 h-16 md:h-[72px] flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2.5">
-      <svg class="w-7 h-8 text-[#0B1E6E]" viewBox="0 0 100 120" fill="currentColor" aria-hidden="true"><path d="M50 5C30 5 15 20 15 38c0 10 4 18 4 28 0 15 5 49 11 49 4 0 6-8 8-20 2-10 4-15 12-15s10 5 12 15c2 12 4 20 8 20 6 0 11-34 11-49 0-10 4-18 4-28C85 20 70 5 50 5z"/></svg>
+    <a href="#" class="flex items-center gap-2.5 md:gap-3">
+      <img src="logo.png" alt="Dr. Teeth Dental Care & Implant Centre logo" width="48" height="48" class="w-10 h-10 md:w-12 md:h-12 object-contain shrink-0">
       <span class="leading-none">
-        <span class="block text-xl md:text-2xl font-semibold tracking-tight text-[#0B1E6E]" style="font-family:var(--serif);">Dr. Teeth</span>
-        <span class="block text-[9px] tracking-[0.24em] uppercase text-[#6B6F80] mt-0.5">Dental Care &bull; Implant Centre</span>
+        <span class="block text-lg md:text-2xl font-semibold tracking-tight text-[#0B1E6E]" style="font-family:var(--serif);">Dr. Teeth</span>
+        <span class="block text-[8px] md:text-[9px] tracking-[0.22em] uppercase text-[#6B6F80] mt-0.5">Dental Care &bull; Implant Centre</span>
       </span>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-sm text-[#6B6F80]">
-      <a href="#about" class="hover:text-[#14152A] transition-colors">About</a>
-      <a href="#services" class="hover:text-[#14152A] transition-colors">Services</a>
-      <a href="#equipment" class="hover:text-[#14152A] transition-colors">Equipment</a>
-      <a href="#awards" class="hover:text-[#14152A] transition-colors">Awards</a>
-      <a href="#reviews" class="hover:text-[#14152A] transition-colors">Reviews</a>
-      <a href="#contact" class="hover:text-[#14152A] transition-colors">Contact</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#equipment" class="nav-link">Equipment</a>
+      <a href="#awards" class="nav-link">Awards</a>
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
     <div class="flex items-center gap-3">
       <a href="https://wa.me/918660708303" target="_blank" rel="noopener" aria-label="Book an appointment on WhatsApp" class="hidden sm:inline-flex rounded-full bg-[#0B1E6E] text-[#F3F1EA] text-sm font-medium px-5 py-2.5 hover:bg-[#081550] transition-colors btn-lift">
@@ -53,12 +62,12 @@
     </div>
   </div>
   <div id="mobileMenu" class="hidden md:hidden border-t border-[#14152A]/5 px-5 py-4 space-y-3 text-sm" style="background:rgba(243,241,234,0.97);">
-    <a href="#about" class="block py-1">About</a>
-    <a href="#services" class="block py-1">Services</a>
-    <a href="#equipment" class="block py-1">Equipment</a>
-    <a href="#awards" class="block py-1">Awards</a>
-    <a href="#reviews" class="block py-1">Reviews</a>
-    <a href="#contact" class="block py-1">Contact</a>
+    <a href="#about" class="mnav-link block py-1">About</a>
+    <a href="#services" class="mnav-link block py-1">Services</a>
+    <a href="#equipment" class="mnav-link block py-1">Equipment</a>
+    <a href="#awards" class="mnav-link block py-1">Awards</a>
+    <a href="#reviews" class="mnav-link block py-1">Reviews</a>
+    <a href="#contact" class="mnav-link block py-1">Contact</a>
     <a href="https://wa.me/918660708303" target="_blank" rel="noopener" class="inline-flex rounded-full bg-[#0B1E6E] text-[#F3F1EA] font-medium px-5 py-2.5">Book Appointment</a>
   </div>
 </header>
@@ -625,7 +634,7 @@
     <div class="reveal lg:order-1">
       <p class="text-xs font-medium tracking-[0.22em] text-[#5B74C4] uppercase">Book Now</p>
       <h2 class="mt-4 text-4xl md:text-5xl tracking-tight" style="font-family:var(--serif); font-weight:500;">Request an appointment</h2>
-      <p class="mt-4 text-sm text-[#6B6F80]">Fill in your details and we'll confirm your appointment at the earliest.</p>
+      <p class="mt-4 text-sm text-[#6B6F80]">Fill in your details and tap send. Your request opens in WhatsApp so we can confirm your appointment right away.</p>
       <form class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="handleFormSubmit(event)">
         <div>
           <label for="fname" class="block text-xs font-semibold uppercase tracking-wider text-[#6B6F80] mb-1.5">First Name</label>
@@ -635,11 +644,7 @@
           <label for="lname" class="block text-xs font-semibold uppercase tracking-wider text-[#6B6F80] mb-1.5">Last Name</label>
           <input type="text" id="lname" placeholder="e.g. Shetty" class="w-full rounded-2xl border border-[#14152A]/10 bg-[#F8F6F0] px-4 py-3 text-sm outline-none focus:border-[#0B1E6E] focus:ring-4 focus:ring-[#0B1E6E]/10 transition">
         </div>
-        <div>
-          <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-[#6B6F80] mb-1.5">Phone Number</label>
-          <input type="tel" id="phone" placeholder="10-digit mobile number" required class="w-full rounded-2xl border border-[#14152A]/10 bg-[#F8F6F0] px-4 py-3 text-sm outline-none focus:border-[#0B1E6E] focus:ring-4 focus:ring-[#0B1E6E]/10 transition">
-        </div>
-        <div>
+        <div class="sm:col-span-2">
           <label for="date" class="block text-xs font-semibold uppercase tracking-wider text-[#6B6F80] mb-1.5">Preferred Date</label>
           <input type="date" id="date" class="w-full rounded-2xl border border-[#14152A]/10 bg-[#F8F6F0] px-4 py-3 text-sm outline-none focus:border-[#0B1E6E] focus:ring-4 focus:ring-[#0B1E6E]/10 transition">
         </div>
@@ -666,11 +671,14 @@
           <textarea id="message" rows="4" placeholder="Describe your concern or any specific requirements…" class="w-full rounded-2xl border border-[#14152A]/10 bg-[#F8F6F0] px-4 py-3 text-sm outline-none focus:border-[#0B1E6E] focus:ring-4 focus:ring-[#0B1E6E]/10 transition resize-y"></textarea>
         </div>
         <div class="sm:col-span-2">
-          <button type="submit" class="w-full rounded-full bg-[#0B1E6E] text-[#F3F1EA] text-sm font-medium px-7 py-3.5 hover:bg-[#081550] transition-colors btn-lift">Confirm Appointment</button>
+          <button type="submit" class="w-full flex items-center justify-center gap-2 rounded-full bg-[#0B1E6E] text-[#F3F1EA] text-sm font-medium px-7 py-3.5 hover:bg-[#081550] transition-colors btn-lift">
+            <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
+            Send on WhatsApp
+          </button>
         </div>
       </form>
       <div id="form-success" class="hidden mt-4 rounded-2xl border border-[#8FA5E5]/60 bg-[#8FA5E5]/15 px-5 py-4 text-sm text-[#0B1E6E]">
-        Thank you! We've received your request and will contact you shortly to confirm your appointment.
+        Opening WhatsApp with your request. If it doesn't open, message us directly at <a href="https://wa.me/919880540084" target="_blank" rel="noopener" class="font-semibold underline">+91 98805 40084</a>.
       </div>
     </div>
   </div>
@@ -699,9 +707,14 @@
   </div>
   <div class="relative border-t border-white/20" style="background:rgba(8,12,38,0.6); backdrop-filter:blur(16px);">
     <div class="mx-auto max-w-[1200px] px-5 md:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-10 text-sm">
-      <div>
-        <p class="text-2xl tracking-tight text-[#F3F1EA]" style="font-family:var(--serif); font-weight:600;">Dr. Teeth</p>
-        <p class="mt-3 text-xs text-[#F3F1EA]/60 leading-relaxed">A trusted dental care clinic serving Mangaluru. Advanced implant dentistry, cosmetic care and comprehensive oral health under one roof.</p>
+      <div class="col-span-2 md:col-span-1">
+        <div class="flex items-center gap-3">
+          <span class="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg shrink-0">
+            <img src="logo.png" alt="Dr. Teeth Dental Care & Implant Centre logo" width="48" height="48" class="w-12 h-12 object-contain">
+          </span>
+          <p class="text-2xl tracking-tight text-[#F3F1EA]" style="font-family:var(--serif); font-weight:600;">Dr. Teeth</p>
+        </div>
+        <p class="mt-4 text-xs text-[#F3F1EA]/60 leading-relaxed">A trusted dental care clinic serving Mangaluru. Advanced implant dentistry, cosmetic care and comprehensive oral health under one roof.</p>
       </div>
       <nav aria-label="Explore">
         <p class="text-xs font-semibold text-[#F3F1EA]/50 uppercase tracking-wider mb-4">Explore</p>
@@ -848,11 +861,22 @@
     if (e.key === 'ArrowLeft') shiftLB(-1);
   });
 
-  // Appointment form
+  // Appointment form -> opens a prefilled WhatsApp chat
   function handleFormSubmit(e) {
     e.preventDefault();
+    const val = id => (document.getElementById(id).value || '').trim();
+    const name = [val('fname'), val('lname')].filter(Boolean).join(' ');
+    const date = val('date');
+    const service = val('service');
+    const notes = val('message');
+    const lines = ['Hello Dr. Teeth, I would like to book an appointment.'];
+    if (name) lines.push('Name: ' + name);
+    if (service) lines.push('Service: ' + service);
+    if (date) lines.push('Preferred date: ' + date);
+    if (notes) lines.push('Notes: ' + notes);
+    const url = 'https://wa.me/919880540084?text=' + encodeURIComponent(lines.join('\n'));
+    window.open(url, '_blank', 'noopener');
     document.getElementById('form-success').classList.remove('hidden');
-    e.target.reset();
     document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 </script>
