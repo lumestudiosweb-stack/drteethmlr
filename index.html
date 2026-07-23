@@ -49,11 +49,12 @@
       <img src="logo.png" alt="Dr. Teeth Dental Care & Implant Centre logo" width="112" height="112" class="w-[72px] h-[72px] md:w-28 md:h-28 object-contain shrink-0">
       <span class="leading-none">
         <span class="block text-[1.7rem] md:text-3xl font-semibold tracking-tight text-[#0B1E6E]" style="font-family:var(--serif);">Dr. Teeth</span>
-        <span class="block text-[8px] md:text-[10px] tracking-[0.1em] md:tracking-[0.2em] uppercase text-[#6B6F80] mt-0.5">Dental Care &bull; Implant Centre</span>
+        <span class="block lg:hidden xl:block text-[8px] md:text-[10px] tracking-[0.1em] md:tracking-[0.2em] uppercase text-[#6B6F80] mt-0.5">Dental Care &bull; Implant Centre</span>
       </span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm text-[#6B6F80]">
+    <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-sm text-[#6B6F80]">
       <a href="#about" class="nav-link">About</a>
+      <a href="#doctors" class="nav-link">Doctors</a>
       <a href="#services" class="nav-link">Services</a>
       <a href="#equipment" class="nav-link">Equipment</a>
       <a href="#awards" class="nav-link">Awards</a>
@@ -64,13 +65,14 @@
       <a href="https://wa.me/918660708303" target="_blank" rel="noopener" aria-label="Book an appointment on WhatsApp" class="hidden sm:inline-flex rounded-full bg-[#0B1E6E] text-[#F3F1EA] text-sm font-medium px-5 py-2.5 hover:bg-[#081550] transition-colors btn-lift">
         Book Appointment
       </a>
-      <button id="menuBtn" aria-label="Open menu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-[#14152A]/10">
+      <button id="menuBtn" aria-label="Open menu" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-full border border-[#14152A]/10">
         <iconify-icon icon="solar:hamburger-menu-linear" class="text-lg"></iconify-icon>
       </button>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-[#14152A]/5 px-5 py-4 space-y-3 text-sm" style="background:rgba(243,241,234,0.97);">
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-[#14152A]/5 px-5 py-4 space-y-3 text-sm" style="background:rgba(243,241,234,0.97);">
     <a href="#about" class="mnav-link block py-1">About</a>
+    <a href="#doctors" class="mnav-link block py-1">Doctors</a>
     <a href="#services" class="mnav-link block py-1">Services</a>
     <a href="#equipment" class="mnav-link block py-1">Equipment</a>
     <a href="#awards" class="mnav-link block py-1">Awards</a>
@@ -191,6 +193,63 @@
         Book a Consultation
         <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOCTORS ===================== -->
+<section id="doctors" class="relative overflow-hidden py-20 md:py-28" style="background:linear-gradient(120deg, #0A1030 0%, #101C55 55%, #16266E 100%);">
+  <div class="absolute inset-0 opacity-40 pointer-events-none" style="background:radial-gradient(ellipse 55% 70% at 15% 20%, rgba(143,165,229,0.35), transparent), radial-gradient(ellipse 50% 70% at 85% 80%, rgba(11,30,110,0.7), transparent); filter:blur(50px);"></div>
+  <div class="relative mx-auto max-w-[1200px] px-5 md:px-8">
+    <div class="text-center">
+      <p class="reveal text-xs font-medium tracking-[0.22em] text-[#8FA5E5] uppercase">Our Consultants</p>
+      <h2 class="reveal mt-4 text-4xl md:text-5xl tracking-tight text-[#F3F1EA]" style="font-family:var(--serif); font-weight:500;">
+        Meet the specialists
+      </h2>
+      <p class="reveal mx-auto mt-5 max-w-xl text-base text-[#F3F1EA]/60 leading-relaxed">
+        Specialist-led care across endodontics, oral surgery, implantology and
+        children's dentistry, all under one roof in Konchady.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-md sm:max-w-none mx-auto">
+
+      <article class="reveal rounded-[26px] bg-[#F8F6F0] overflow-hidden grad-border" style="box-shadow: rgba(5,8,30,0.45) 0px 30px 60px -24px;">
+        <div class="relative overflow-hidden cursor-pointer bg-[#E7E9F4]" style="aspect-ratio:4/5;" onclick="openLB(this)">
+          <img src="dr-shreyas-rai.jpg" alt="Dr. Shreyas Rai, MDS, Endodontist at Dr. Teeth Dental Care, Mangaluru" class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105" loading="lazy" width="720" height="900">
+        </div>
+        <div class="p-6">
+          <span class="rounded-full bg-[#0B1E6E]/8 text-[#0B1E6E] text-[10px] font-semibold tracking-wider uppercase px-3 py-1">Endodontist</span>
+          <h3 class="mt-3 text-xl tracking-tight" style="font-family:var(--serif); font-weight:600;">Dr. Shreyas Rai</h3>
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#5B74C4] mt-1">MDS</p>
+          <p class="mt-3 text-sm text-[#6B6F80] leading-relaxed">Root canal specialist, performing painless single-visit root canal treatment, post &amp; core buildup and apicectomy to save infected teeth.</p>
+        </div>
+      </article>
+
+      <article class="reveal rounded-[26px] bg-[#F8F6F0] overflow-hidden grad-border" style="box-shadow: rgba(5,8,30,0.45) 0px 30px 60px -24px;">
+        <div class="relative overflow-hidden cursor-pointer bg-[#E7E9F4]" style="aspect-ratio:4/5;" onclick="openLB(this)">
+          <img src="dr-ashish-surgeon.jpg" alt="Dr. Ashish Shetty, MDS, Oral and Maxillofacial Surgeon and Implantologist at Dr. Teeth Dental Care, Mangaluru" class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105" loading="lazy" width="720" height="900">
+        </div>
+        <div class="p-6">
+          <span class="rounded-full bg-[#0B1E6E]/8 text-[#0B1E6E] text-[10px] font-semibold tracking-wider uppercase px-3 py-1">Oral Surgeon &amp; Implantologist</span>
+          <h3 class="mt-3 text-xl tracking-tight" style="font-family:var(--serif); font-weight:600;">Dr. Ashish Shetty</h3>
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#5B74C4] mt-1">MDS</p>
+          <p class="mt-3 text-sm text-[#6B6F80] leading-relaxed">Oral and maxillofacial surgeon leading implant placement and surgical care, from dental implants and impaction removal to complex extractions.</p>
+        </div>
+      </article>
+
+      <article class="reveal rounded-[26px] bg-[#F8F6F0] overflow-hidden grad-border sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto lg:col-span-1 lg:max-w-none" style="box-shadow: rgba(5,8,30,0.45) 0px 30px 60px -24px;">
+        <div class="relative overflow-hidden cursor-pointer bg-[#E7E9F4]" style="aspect-ratio:4/5;" onclick="openLB(this)">
+          <img src="dr-ashish-pedo.jpg" alt="Dr. Ashish Shetty, MDS, Pedodontist at Dr. Teeth Dental Care, Mangaluru" class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105" loading="lazy" width="720" height="900">
+        </div>
+        <div class="p-6">
+          <span class="rounded-full bg-[#0B1E6E]/8 text-[#0B1E6E] text-[10px] font-semibold tracking-wider uppercase px-3 py-1">Pedodontist</span>
+          <h3 class="mt-3 text-xl tracking-tight" style="font-family:var(--serif); font-weight:600;">Dr. Ashish Shetty</h3>
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#5B74C4] mt-1">MDS</p>
+          <p class="mt-3 text-sm text-[#6B6F80] leading-relaxed">Children's dental specialist providing paediatric crowns, pit &amp; fissure sealants, fluoride application and habit-breaking appliances.</p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -726,6 +785,7 @@
         <p class="text-xs font-semibold text-[#F3F1EA]/50 uppercase tracking-wider mb-4">Explore</p>
         <ul class="space-y-2.5 text-[#F3F1EA]/80">
           <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#doctors" class="hover:text-white transition-colors">Our Doctors</a></li>
           <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
           <li><a href="#equipment" class="hover:text-white transition-colors">Equipment</a></li>
           <li><a href="#awards" class="hover:text-white transition-colors">Awards</a></li>
